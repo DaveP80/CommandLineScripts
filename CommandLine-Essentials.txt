@@ -14,7 +14,10 @@ Import-Module -Name PSReadLine
 
 https://youtu.be/TY_YKz1uvws Video on installing oh-my-posh and fonts
 
-https://www.powershellgallery.com/packages 
+https://www.powershellgallery.com/packages
+
+	//docs on how to install httpie
+https://httpie.io/docs/cli/installation 
 
 $pwd print current directory in powershell
 cd $home go back to home directory in powershell

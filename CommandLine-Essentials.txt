@@ -1,0 +1,121 @@
+https://docs.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup //how to make a custom powershell 
+
+Root folder for powershell themes: C:\Users\yourName\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+
+Folder contains powershell themes: C:\Users\yourName\AppData\Local\Programs\oh-my-posh\themes
+
+winget install oh-my-posh
+
+Install-Module -Name PSReadLine
+Install-Module -Name Terminal-Icons
+
+Import-Module -Name Terminal-Icons
+Import-Module -Name PSReadLine
+
+https://youtu.be/TY_YKz1uvws Video on installing oh-my-posh and fonts
+
+https://www.powershellgallery.com/packages 
+
+$pwd print current directory in powershell
+cd $home go back to home directory in powershell
+	echo ~ //gitbash
+	
+pwd, $pwd, and Get-Location //very similar commands
+
+dir -a //show all including hidden
+dir -Hidden //show all hidden files
+
+Set-Variable -Name "desc" -Value "A description"
+echo $Name
+	in Bash "  "="  "
+	$"  "
+	
+ctrl + a //highlight entire line
+ctrl left arrow or right arrow //jump to next word in string
+
+ctrl V //paste
+
+code .
+idea .
+notepad++ .
+	//opens directory in the desired app
+
+$^
+$$ //first and last elements of previous command
+
+	in Bash \ 
+	//this continues command onto another line
+	
+shift+enter in powershell to go to next line
+
+backtick ` in powershell to output on new line
+
+ctrl+A+K powershell to delete line
+
+curl //out of box from gitbash
+
+Invoke-RestMethod -URI http://localhost:8080/api/auth/list -Method GET
+
+or
+
+Invoke-WebRequest http://localhost:8080/api/auth/list | Select-Object -Expand Content
+
+curl http://localhost:8080/api/auth/list
+
+Run spring boot app, SpringSecurityDemo
+
+curl -H "Authorization: Bearer $TOKEN" http://localhost:8080/hello
+
+	//search for string in a directory, works with intellij and vscode 
+
+$folderPath = "C:\Users\yourName\documents\learning\yourProject\*"
+$pattern = "Server running on"
+Get-ChildItem $folderPath -recurse | Select-String -pattern $pattern |
+Select Path, Placeholder, LineNumber, Line, Pattern, Matches | Out-GridView
+
+	// search a text file for a specific string
+$folderPath = "C:\Users\yourName\documents\learning\testDocument.txt"
+$pattern = "hello tom"
+Get-Item $folderPath | Select-String -pattern $pattern |
+Select Path, Placeholder, LineNumber, Line, Pattern, Matches | Out-GridView
+
+	//Search a directory for files containing a certain string value
+	//output is a grid view with the number of files counted at the heading
+$folderPath = "$home\*"
+$fileName = '*users*'
+$output = get-childitem -Force $folderPath -Filter $fileName -Recurse | where {!$_.PSIsContainer} |
+select-object FullName, LastWriteTime, Length | Sort-Object FullName
+$count = ($output).Count
+$output | Out-GridView -Title "file name search results - total count: $count"
+
+	//search a working directory for all folders (directories) with a specific name
+
+Get-ChildItem . -filter "example" -Directory -Recurse | %{$_.fullname}
+
+	// search a working directory for a wildcard!
+Get-ChildItem . -filter '*example*' -Directory -Recurse | %{$_.fullname}
+
+	// search a working directory for a wildcard, showing hidden files i.e. .Git
+
+Get-ChildItem . -Force -filter ".Git" -Directory -Recurse | %{$_.fullname}
+
+Move-Item -Path C:\test.txt -Destination E:\Temp\tst.txt
+
+	//Copy directory and paste to a new directory with all trees intact
+Copy-Item -Path "C:\Logfiles\*" -Destination "C:\Drawings" -Recurse
+
+	//Create new directory, git init, and push to remote origin
+
+git init, git add ., git commit -m "", git remote add origin URL, git push, upstream origin
+
+	//unzip a file and extract
+
+Expand-Archive -Path archive.zip -DestinationPath C:\Demo\Archive
+
+
+
+
+
+	
+
+
